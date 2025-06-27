@@ -59,3 +59,21 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+<p align="center">## Tutorial on Laravel Breez Spatie Assign Roles for Superadmin and Users Role Traning.</p>
+
+### Tutorial Guide 
+- **[How to Reset Visual Studio Code to Default Settings | Reset VSCode - YouTube](https://www.youtube.com/watch?v=FzZqWS4OjXU)**
+- **[Setup Visual Studio Code for Laravel Development | Install Material Icon Extention - YouTube](https://www.youtube.com/watch?v=rk2myvvutyk&list=PLDc9bt_00KcJJwc_RUoNZPwA-xGvvCEdA&index=3)**
+- **[Code Step By Step Laravel Complete Course in Hindi 2025 | Everything About Laravel - YouTube](https://www.youtube.com/watch?v=hpWziUZMXgQ&t=25359s)**
+- **[Code Step By Step Laravel 12 Full Tutorial in Hindi | Complete Guide for Beginners to Advance (Step by Step) - YouTube](https://www.youtube.com/watch?v=bixnv3xHccs)**
+- **[Code With ERaufi Introduction to Laravel 12 Course - YouTube](https://www.youtube.com/watch?v=psgeYGWryGQ&list=PLWiQT7FWaG1jG8RQq1dFiSE7O-g9HQuYE)**
+- **[Installation in Laravel | laravel-permission | Spatie](https://spatie.be/docs/laravel-permission/v6/installation-laravel)**
+- **[Laravel Roles & Permissions Project | Create Permissions | Spatie | PHP Tech Life Hindi - YouTube](https://www.youtube.com/watch?v=xFsH0LeCwj8&list=PLRB0wzP8AS_GfoZTiqsY1397H8LcXgkMZ&index=3)**
+- **[Laravel 11 Complete Crash Course Tutorial in Hindi with Project (Laravel in 2 hours) - YouTube](https://www.youtube.com/watch?v=_HQ71BUlDUQ&list=PLT9miexWCpPW3yZsbQOLOTLemE5UYSdBu)**
+- **[FullCalendar js | Integrate fullCalendar in Laravel | Customize fullCalendar js in Laravel - YouTube](https://www.youtube.com/watch?v=rujgiTHLCqw&list=PLDc9bt_00KcL9j9VoMcccR4HMF3JtYndd)**
+- **[Mailtrap - Email Delivery Platform](https://mailtrap.io/inboxes)**
+
+
+- **[Complete Git and GitHub Tutorial for Beginners - YouTube](https://www.youtube.com/watch?v=Ez8F0nW6S-w)**
