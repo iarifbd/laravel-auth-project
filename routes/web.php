@@ -12,19 +12,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-Route::get('/test', function () {
-    return view('testPage');
-});
-
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/admin_dashboard', function () {
-    return view('dashboard_templet.index');
-})->middleware(['auth', 'verified'])->name('admin_dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -63,14 +54,22 @@ Route::middleware('auth')->group(function () {
     Route::post('/users/{id}', [UserController::class, 'update'])->name('users.update');
     Route::delete('/users', [UserController::class, 'destroy'])->name('users.destroy');
 
-
 });
 
 
 // Admin page Define a route group with the middleware
-Route::middleware(['permission:admin page view'])->group(function () {
+Route::middleware(['auth','permission:admin page view'])->group(function () {
     Route::resource('/admin_page', AdminController::class);
+    Route::post('/user_logout', [AdminController::class, 'log_out'])->name('user_logout');
+    Route::get('/admin_dashboard', [AdminController::class, 'index'])->name('admin_dashboard');
 });
+
+
+Route::get('/user_login', [AdminController::class, 'loginPage'])->name('user_login');
+Route::post('/user_login', [AdminController::class, 'login'])->name('user_verify');
+
+
+
 
 
 

@@ -1,22 +1,41 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\Auth\LoginRequest;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        return view('dashboard_templet.index',[
-            'role'=>Auth::user()->getRoleNames(), // returns a collection of role name susing Spatie package
-            'name'=>Auth::user()->name,
-            'email'=>Auth::user()->email,
+
+        $user = Auth::user();
+        $roles = $user->getRoleNames()->implode(', '); // Convert roles to comma-separated string
+
+        return view('dashboard_templet.index', [
+            'role' => $roles,
+            'name' => $user->name,
+            'email' => $user->email,
         ]);
+    }
+
+    public function loginPage(){
+        return view('dashboard_templet.login');
+    }
+
+    /**
+     * Display a login of the resource.
+     */
+    public function login(LoginRequest $request): RedirectResponse
+    {
+        $request->authenticate();
+
+        session()->regenerate();
+
+        return redirect()->intended(route('admin_dashboard'));
     }
 
     /**
@@ -31,14 +50,6 @@ class AdminController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
     {
         //
     }
@@ -66,4 +77,18 @@ class AdminController extends Controller
     {
         //
     }
+
+    public function log_out(Request $request): RedirectResponse
+    {
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        //return redirect('/');
+        return redirect()->route('user_login');
+    }
+
+
 }
