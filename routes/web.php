@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticalController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
@@ -64,5 +65,13 @@ Route::middleware('auth')->group(function () {
 
 
 });
+
+
+// Admin page Define a route group with the middleware
+Route::middleware(['permission:admin page view'])->group(function () {
+    Route::resource('/admin_page', AdminController::class);
+});
+
+
 
 require __DIR__.'/auth.php';
