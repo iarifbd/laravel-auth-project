@@ -17,6 +17,32 @@ class DashBoardAuthSessionController extends Controller
 {
 
     /**
+     * Show the form for Dashboard display.
+     */
+    public function dashboard()
+    {
+        $user = Auth::user();
+        $roles = $user->getRoleNames()->implode(', ');
+
+        $data = [
+            'role' => $roles,
+            'name' => $user->name,
+            'email' => $user->email,
+        ];
+
+        // Role-based view rendering
+        if ($user->hasRole('Admin')) {
+            return view('dashboard_templet.index',$data);
+        } elseif ($user->hasRole('teacher')) {
+            return "I am teacher.";
+        } elseif ($user->hasRole('Writer')) {
+            return "I am writer.";
+        } else {
+            return view('welcome');
+        }
+    }
+
+    /**
      * Show the form for login_page display.
      */
     public function login_page()
@@ -33,7 +59,7 @@ class DashBoardAuthSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('admin_dashboard', absolute: false));
+        return redirect()->intended(route('dashboard', absolute: false));
     }
 
     /**
@@ -47,7 +73,7 @@ class DashBoardAuthSessionController extends Controller
     /**
      * Show the form registratin data veryfy.
      */
-    
+
     public function verify_regdata(Request $request): RedirectResponse
     {
         $request->validate([
@@ -66,7 +92,7 @@ class DashBoardAuthSessionController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('admin_dashboard', absolute: false));
+        return redirect(route('dashboard', absolute: false));
     }
 
     public function log_out(Request $request): RedirectResponse
@@ -80,5 +106,5 @@ class DashBoardAuthSessionController extends Controller
         //return redirect('/');
         return redirect()->intended(route('admin_login', absolute: false));
     }
-    
+
 }

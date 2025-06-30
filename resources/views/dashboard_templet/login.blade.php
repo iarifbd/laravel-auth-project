@@ -20,7 +20,7 @@
 								Sign in to your account to continue
 							</p>
 						</div>
-						<form method="post" action="{{ route('user_verify') }}">
+						<form method="post" action="{{ route('verify_admin') }}">
 							@csrf
 							<div class="card">
 								<div class="card-body">

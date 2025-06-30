@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticalController;
+use App\Http\Controllers\Dashboard_auth\DashBoardAuthSessionController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
@@ -10,14 +11,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 
 Route::middleware('auth')->group(function () {
+
+    //Dashboard
+    Route::get('/dashboard', [DashBoardAuthSessionController::class, 'dashboard'])->name('dashboard');
+
+    //Profile
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -55,21 +58,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/users', [UserController::class, 'destroy'])->name('users.destroy');
 
 });
-
-
-// Admin page Define a route group with the middleware
-Route::middleware(['auth','permission:admin page view'])->group(function () {
-    Route::resource('/admin_page', AdminController::class);
-    Route::post('/user_logout', [AdminController::class, 'log_out'])->name('user_logout');
-    Route::get('/admin_dashboard', [AdminController::class, 'index'])->name('admin_dashboard');
-});
-
-
-Route::get('/user_login', [AdminController::class, 'loginPage'])->name('user_login');
-Route::post('/user_login', [AdminController::class, 'login'])->name('user_verify');
-
-
-
 
 
 
